@@ -1,0 +1,38 @@
+__ALBUMS__
+-title
+-multiple pictures
+-slug
+
+
+__BLOG_POSTS__
+-title
+-body
+-picture
+-slug
+
+
+__PICTURES__
+-title
+-description
+-picture
+-album
+-availablitiy
+-price 
+-slug
+
+Upload Single Picture
+Upload Multiple pictures
+
+
+
+__SLIDESHOW__
+-picture
+
+__DESCRIPTIONS__
+-Home page greeting
+-About text
+-Contact text
+
+
+__EMAIL__
+-Send email
