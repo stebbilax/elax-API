@@ -7,7 +7,7 @@ const Picture = require('../models/Picture');
 const { getPictures, getPicture, createPicture } = require('../controllers/pictures');
 
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router.route("/")
     .get(getPictures)

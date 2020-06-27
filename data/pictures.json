@@ -1,0 +1,50 @@
+[
+    {
+        "_id": "5d725c84c4ded7bcb480eaa0",
+        "name": "Goat One",
+        "image": "http://res.cloudinary.com/dcphiik6q/image/upload/v1593191798/kcabize57q8ijlx66iaq.png",
+        "description": "Good Goat",
+        "availability": "true",
+        "price": "50.000",
+        "album": "5d713995b721c3bb38c1f5d0"
+    },
+    {
+        "_id": "5d725cd2c4ded7bcb480eaa2",
+        "name": "Goat Two",
+        "image": "http://res.cloudinary.com/dcphiik6q/image/upload/v1593191798/kcabize57q8ijlx66iaq.png",
+        "description": "Good Goat",
+        "availability": "true",
+        "price": "50.000",
+        "album": "5d713995b721c3bb38c1f5d0"
+    },
+    {
+        "_id": "5d725ce8c4ded7bcb480eaa3",
+        "name": "Goat Three",
+        "image": "http://res.cloudinary.com/dcphiik6q/image/upload/v1593191798/kcabize57q8ijlx66iaq.png",
+        "description": "Good Goat",
+        "availability": "true",
+        "price": "50.000",
+        "album": "5d713995b721c3bb38c1f5d0",
+        "public_id": "qzmpaykxicda5cxpkdi6"
+    },
+    {
+        "_id": "5d725cfec4ded7bcb480eaa4",
+        "name": "Horse One",
+        "image": "http://res.cloudinary.com/dcphiik6q/image/upload/v1593191798/kcabize57q8ijlx66iaq.png",
+        "description": "Good Goat",
+        "availability": "true",
+        "price": "50.000",
+        "album": "5d713a66ec8f2b88b8f830b8",
+        "public_id": "qzmpaykxicda5cxpkdi6"
+    },
+    {
+        "_id": "5d725cfec4ded7bcb480eaa5",
+        "name": "Horse Two",
+        "image": "http://res.cloudinary.com/dcphiik6q/image/upload/v1593191798/kcabize57q8ijlx66iaq.png",
+        "description": "Good Goat",
+        "availability": "true",
+        "price": "50.000",
+        "album": "5d713a66ec8f2b88b8f830b8",
+        "public_id": "qzmpaykxicda5cxpkdi6"
+    }
+]

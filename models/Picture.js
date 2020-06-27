@@ -18,7 +18,7 @@ const PictureSchema = new mongoose.Schema(
             default: Date.now
         },
         image: String,
-        image_id: String,
+        public_id: String,
         album: {
             type: mongoose.Schema.ObjectId,
             ref: 'Album',
