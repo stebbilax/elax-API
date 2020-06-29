@@ -1,6 +1,8 @@
 const cloudinary = require('cloudinary');
 const dotenv = require('dotenv');
 
+dotenv.config({ path: "../config/config.env" });
+
 
 // Config cloudinary
 
@@ -28,9 +30,6 @@ const cloudinaryDelete = async (req, res, next) => {
         cloudinary.uploader.destroy(publicID, function (err, result) { console.log(result) });
 
     }
-
-
-
 
 }
 

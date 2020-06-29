@@ -13,14 +13,17 @@ const router = express.Router();
 // Re-Route into other resource routers
 router.use('/:albumId/pictures', pictureRouter);
 
+// Protection middleware
+const { protect, authorize } = require('../middleware/auth')
+
 
 router.route("/")
     .get(getAlbums)
-    .post(createAlbum);
+    .post(protect, authorize("admin"), createAlbum);
 
 router.route("/:id")
     .get(getAlbum)
-    .delete(deleteAlbum);
+    .delete(protect, authorize("admin"), deleteAlbum);
 
 
 module.exports = router;

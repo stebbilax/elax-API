@@ -53,7 +53,7 @@ exports.deleteAlbum = asyncHandler(async (req, res, next) => {
     cloudinaryDelete(req)
 
     if (!album) {
-        next(new ErrorResponse('Album not found', 404))
+        return next(new ErrorResponse('Album not found', 404))
     }
 
     album.remove();

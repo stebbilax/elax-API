@@ -80,17 +80,19 @@ exports.createPicture = asyncHandler(async (req, res, next) => {
                 return res.status(400).json(err)
             }
             try {
-                await Picture.create({ ...req.body, image: result.url, public_id: result.public_id })
+                let picture = await Picture.create({ ...req.body, image: result.url, public_id: result.public_id })
+
+                res.status(200).json({
+                    success: true,
+                    data: picture
+                })
 
             } catch (error) {
                 next(error)
             }
         });
     }
-    res.status(200).json({
-        success: true,
-        response: "saved"
-    })
+
 })
 
 

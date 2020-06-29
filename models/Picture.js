@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require("slugify");
 
 
 const PictureSchema = new mongoose.Schema(
@@ -17,7 +18,10 @@ const PictureSchema = new mongoose.Schema(
             type: Date,
             default: Date.now
         },
-        image: String,
+        image: {
+            type: String,
+            required: true
+        },
         public_id: String,
         album: {
             type: mongoose.Schema.ObjectId,
@@ -26,5 +30,12 @@ const PictureSchema = new mongoose.Schema(
         }
     }
 )
+
+
+// Create Picture slug from the name
+PictureSchema.pre('save', function (next) {
+    this.slug = slugify(this.name, { lower: true });
+    next();
+});
 
 module.exports = mongoose.model('Picture', PictureSchema)

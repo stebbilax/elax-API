@@ -1,4 +1,6 @@
+
 const mongoose = require('mongoose');
+const slugify = require("slugify");
 
 
 const AlbumSchema = new mongoose.Schema(
@@ -6,7 +8,8 @@ const AlbumSchema = new mongoose.Schema(
         name: {
             type: String,
             trim: true,
-            maxlength: [30, 'Name can not be more than 50 characters']
+            maxlength: [30, 'Name can not be more than 50 characters'],
+            required: true
         },
         slug: String,
         createdAt: {
@@ -35,6 +38,11 @@ AlbumSchema.virtual('pictures', {
     justOne: false
 });
 
+// Create album slug from the name
+AlbumSchema.pre('save', function (next) {
+    this.slug = slugify(this.name, { lower: true });
+    next();
+});
 
 
 module.exports = mongoose.model('Album', AlbumSchema);

@@ -7,11 +7,15 @@ const Picture = require('../models/Picture');
 const { getPictures, getPicture, createPicture } = require('../controllers/pictures');
 
 
+const { protect, authorize } = require('../middleware/auth')
+
+
+
 const router = express.Router({ mergeParams: true });
 
 router.route("/")
     .get(getPictures)
-    .post(createPicture);
+    .post(protect, authorize("admin"), createPicture);
 
 
 router.route("/:id")

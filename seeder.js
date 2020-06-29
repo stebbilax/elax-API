@@ -9,6 +9,7 @@ dotenv.config({ path: './config/config.env' });
 // Load Models
 const Album = require('./models/Album')
 const Picture = require('./models/Picture')
+const Blogpost = require('./models/Blogpost')
 
 // Connect to DB
 mongoose.connect(process.env.MONGO_URI, {
@@ -21,12 +22,14 @@ mongoose.connect(process.env.MONGO_URI, {
 // Read JSON files
 const albums = JSON.parse(fs.readFileSync(`${__dirname}/data/albums.json`, 'utf-8'));
 const pictures = JSON.parse(fs.readFileSync(`${__dirname}/data/pictures.json`, 'utf-8'));
+const blogposts = JSON.parse(fs.readFileSync(`${__dirname}/data/blogposts.json`, 'utf-8'));
 
 // Import data into DB
 const importData = async () => {
     try {
         await Album.create(albums);
         await Picture.create(pictures);
+        await Blogpost.create(blogposts);
 
         console.log("Data Imported..".green.inverse);
         process.exit();
@@ -38,8 +41,9 @@ const importData = async () => {
 // Delete data
 const deleteData = async () => {
     try {
-        await Album.create(albums);
-        await Picture.create(pictures);
+        await Album.deleteMany();
+        await Picture.deleteMany();
+        await Blogpost.deleteMany();
 
         console.log("Data Destroyed...".red.inverse);
         process.exit();

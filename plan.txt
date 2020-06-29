@@ -36,3 +36,7 @@ __DESCRIPTIONS__
 
 __EMAIL__
 -Send email
+
+
+-- Refactor to make cloudinary delete work for bootcamp aswell
+-- Make a cloudinary upload middleware
