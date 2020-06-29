@@ -69,12 +69,14 @@ const pictures = require('./routes/pictures');
 const albums = require('./routes/albums');
 const blogposts = require('./routes/blogposts');
 const auth = require('./routes/auth');
+const email = require('./routes/email');
 
 // Mount Routes
 app.use("/api/v1/pictures", pictures)
 app.use("/api/v1/albums", albums)
 app.use("/api/v1/blogposts", blogposts)
 app.use("/api/v1/auth", auth)
+app.use("/api/v1/email", email)
 
 
 // Mount Error Handler Middleware
