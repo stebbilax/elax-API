@@ -19,7 +19,7 @@ const errorHandler = require('./middleware/error');
 
 
 // Load env variables
-dotenv.config({ path: './config/config.env' });
+dotenv.config();
 
 
 connectDB();
