@@ -51,7 +51,11 @@ app.use(xss());
 app.use(hpp());
 
 // Enable CORS
-app.use(cors());
+const corsOptions = {
+    exposedHeaders: 'Content-Range'
+}
+
+app.use(cors(corsOptions));
 
 // Rate limiting
 const limiter = rateLimit({
