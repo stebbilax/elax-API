@@ -12,11 +12,11 @@ const ErrorResponse = require("../utils/errorResponse");
 exports.getAlbums = asyncHandler(async (req, res, next) => {
     const albums = await Album.find().populate('pictures');
 
-    // res.header('Access-Control-Expose-Headers', 'Content-Range');
+    const length = albums.length
     res.set('Access-Control-Expose-Headers', 'Content-Range')
-    res.set('Content-Range', "0-4/4")
-    console.log(res.header());
+    res.set('Content-Range', `0-${length}/${length}`)
 
+    console.log(res.header());
 
     res.status(200).json({
         success: true,
