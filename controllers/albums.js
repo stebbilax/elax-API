@@ -14,7 +14,7 @@ exports.getAlbums = asyncHandler(async (req, res, next) => {
 
     const length = albums.length
     res.set('Access-Control-Expose-Headers', 'Content-Range')
-    res.set('Content-Range', `0-${length}/${length}`)
+    res.set('Content-Range', `bytes 0-${length}/${length}`)
 
     console.log(res.header());
 
