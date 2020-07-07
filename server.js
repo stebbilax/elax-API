@@ -52,7 +52,7 @@ app.use(hpp());
 
 // Enable CORS
 const corsOptions = {
-    exposedHeaders: 'Content-Range'
+    exposedHeaders: 'X-Total-Count'
 }
 
 app.use(cors(corsOptions));

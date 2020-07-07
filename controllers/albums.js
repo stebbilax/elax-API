@@ -31,8 +31,8 @@ exports.getAlbum = asyncHandler(async (req, res, next) => {
     const album = await Album.findById(req.params.id).populate('pictures');
 
     const length = album.length
-    res.set('Access-Control-Expose-Headers', 'Content-Range')
-    res.set('Content-Range', `bytes 0-${length}/*`)
+    // res.set('Access-Control-Expose-Headers', 'Content-Range')
+    res.set('X-Total-Count', `${length}`)
 
 
     res.status(200).json({
