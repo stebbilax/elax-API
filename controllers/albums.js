@@ -12,7 +12,8 @@ const ErrorResponse = require("../utils/errorResponse");
 exports.getAlbums = asyncHandler(async (req, res, next) => {
     const albums = await Album.find().populate('pictures');
 
-    res.header('Access-Control-Expose-Headers', 'Content-Range');
+    // res.header('Access-Control-Expose-Headers', 'Content-Range');
+    res.set('Access-Control-Expose-Headers', 'Content-Range')
     res.set('Content-Range', "0-4/4")
     console.log(res.header());
 
