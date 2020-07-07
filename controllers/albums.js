@@ -13,6 +13,8 @@ exports.getAlbums = asyncHandler(async (req, res, next) => {
     const albums = await Album.find().populate('pictures');
 
     res.header('Access-Control-Expose-Headers', 'Content-Range');
+    res.set('Content-Range', "0-4/4")
+    console.log(res.header());
 
 
     res.status(200).json({
