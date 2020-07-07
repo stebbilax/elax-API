@@ -32,10 +32,7 @@ exports.getAlbum = asyncHandler(async (req, res, next) => {
     res.set('X-Total-Count', `${length}`)
 
 
-    res.status(200).json({
-        success: true,
-        data: album
-    })
+    res.status(200).json(album)
 })
 
 
@@ -45,10 +42,7 @@ exports.getAlbum = asyncHandler(async (req, res, next) => {
 exports.createAlbum = asyncHandler(async (req, res, next) => {
     const album = await Album.create(req.body);
 
-    res.status(200).json({
-        success: true,
-        data: album
-    })
+    res.status(200).json(album)
 })
 
 // @desc    Delete album 
@@ -65,5 +59,5 @@ exports.deleteAlbum = asyncHandler(async (req, res, next) => {
 
     album.remove();
 
-    res.status(200).json({ success: true, data: {} });
+    res.status(200).json();
 })

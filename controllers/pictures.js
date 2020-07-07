@@ -36,7 +36,7 @@ exports.getPictures = asyncHandler(async (req, res, next) => {
 
 
 
-    res.status(200).json({ success: true, data: pictures })
+    res.status(200).json(pictures)
 })
 
 
@@ -51,7 +51,7 @@ exports.getPicture = asyncHandler(async (req, res, next) => {
     res.set('X-Total-Count', `${length}`)
 
 
-    res.status(200).json({ response: picture })
+    res.status(200).json(picture)
 })
 
 
@@ -92,10 +92,7 @@ exports.createPicture = asyncHandler(async (req, res, next) => {
             try {
                 let picture = await Picture.create({ ...req.body, image: result.url, public_id: result.public_id })
 
-                res.status(200).json({
-                    success: true,
-                    data: picture
-                })
+                res.status(200).json(picture)
 
             } catch (error) {
                 next(error)

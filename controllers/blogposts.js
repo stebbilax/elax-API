@@ -25,10 +25,7 @@ exports.getBlogposts = asyncHandler(async (req, res, next) => {
     res.set('X-Total-Count', `${length}`)
 
 
-    res.status(200).json({
-        success: true,
-        data: blogposts
-    })
+    res.status(200).json(blogposts)
 })
 
 
@@ -42,10 +39,7 @@ exports.getBlogpost = asyncHandler(async (req, res, next) => {
     res.set('X-Total-Count', `${length}`)
 
 
-    res.status(200).json({
-        success: true,
-        data: blogpost
-    })
+    res.status(200).json(blogpost)
 })
 
 
@@ -74,10 +68,7 @@ exports.createBlogpost = asyncHandler(async (req, res, next) => {
             try {
                 let blogpost = await Blogpost.create({ ...req.body, image: result.url, public_id: result.public_id })
 
-                res.status(200).json({
-                    success: true,
-                    data: blogpost
-                })
+                res.status(200).json(blogpost)
 
             } catch (error) {
                 next(error)
@@ -98,10 +89,7 @@ exports.deleteBlogpost = asyncHandler(async (req, res, next) => {
     const blogpost = await Blogpost.findById(req.params.id);
     blogpost.remove();
 
-    res.status(200).json({
-        success: true,
-        data: {}
-    })
+    res.status(200).json()
 })
 
 
