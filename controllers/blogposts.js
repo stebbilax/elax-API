@@ -22,8 +22,8 @@ exports.getBlogposts = asyncHandler(async (req, res, next) => {
     const blogposts = await Blogpost.find();
 
     const length = blogposts.length
-    res.set('Access-Control-Expose-Headers', 'Content-Range')
-    res.set('Content-Range', `bytes 0-${length}/*`)
+    res.set('X-Total-Count', `${length}`)
+
 
     res.status(200).json({
         success: true,
@@ -39,8 +39,8 @@ exports.getBlogpost = asyncHandler(async (req, res, next) => {
     const blogpost = await Blogpost.findById(req.params.id);
 
     const length = blogpost.length
-    res.set('Access-Control-Expose-Headers', 'Content-Range')
-    res.set('Content-Range', `bytes 0-${length}/*`)
+    res.set('X-Total-Count', `${length}`)
+
 
     res.status(200).json({
         success: true,
