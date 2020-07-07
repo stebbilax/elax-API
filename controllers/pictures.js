@@ -31,6 +31,11 @@ exports.getPictures = asyncHandler(async (req, res, next) => {
         pictures = await Picture.find().populate('album', 'name');
     }
 
+    const length = pictures.length
+    res.set('Access-Control-Expose-Headers', 'Content-Range')
+    res.set('Content-Range', `bytes 0-${length}/*`)
+
+
     res.status(200).json({ success: true, data: pictures })
 })
 
@@ -41,6 +46,11 @@ exports.getPictures = asyncHandler(async (req, res, next) => {
 exports.getPicture = asyncHandler(async (req, res, next) => {
 
     const picture = await Picture.findById(req.params.id)
+
+    const length = picture.length
+    res.set('Access-Control-Expose-Headers', 'Content-Range')
+    res.set('Content-Range', `bytes 0-${length}/*`)
+
     res.status(200).json({ response: picture })
 })
 

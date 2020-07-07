@@ -14,9 +14,8 @@ exports.getAlbums = asyncHandler(async (req, res, next) => {
 
     const length = albums.length
     res.set('Access-Control-Expose-Headers', 'Content-Range')
-    res.set('Content-Range', `bytes 0-${length}/${length}`)
+    res.set('Content-Range', `bytes 0-${length}/*`)
 
-    console.log(res.header());
 
     res.status(200).json({
         success: true,
@@ -30,6 +29,11 @@ exports.getAlbums = asyncHandler(async (req, res, next) => {
 // @access  Public
 exports.getAlbum = asyncHandler(async (req, res, next) => {
     const album = await Album.findById(req.params.id).populate('pictures');
+
+    const length = album.length
+    res.set('Access-Control-Expose-Headers', 'Content-Range')
+    res.set('Content-Range', `bytes 0-${length}/*`)
+
 
     res.status(200).json({
         success: true,
