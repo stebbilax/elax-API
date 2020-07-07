@@ -17,10 +17,7 @@ exports.getAlbums = asyncHandler(async (req, res, next) => {
 
 
 
-    res.status(200).json({
-        success: true,
-        data: albums
-    })
+    res.status(200).json(albums)
 })
 
 
