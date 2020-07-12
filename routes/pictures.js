@@ -15,7 +15,7 @@ const router = express.Router({ mergeParams: true });
 
 router.route("/")
     .get(getPictures)
-    .post(protect, authorize("admin"), createPicture);
+    .post(createPicture);
 
 
 router.route("/:id")
