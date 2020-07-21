@@ -77,11 +77,20 @@ exports.createBlogpost = asyncHandler(async (req, res, next) => {
             }
         });
     }
-
-
-
-
 })
+
+// @desc    Edit one blogpost 
+// @route   PATCH/api/v1/blogposts/:id
+// @access  Private
+exports.editBlogpost = asyncHandler(async (req, res, next) => {
+    let blogpost = await Blogpost.findById(req.params.id);
+    if(!blogpost) return next(new ErrorResponse('Blogpost not found', 404));
+
+    blogpost = await Blogpost.findByIdAndUpdate(req.params.id, req.body)
+
+    res.status(200).json(blogpost)
+})
+
 
 
 // @desc    Delete one blogpost 

@@ -27,6 +27,7 @@ exports.getAlbums = asyncHandler(async (req, res, next) => {
 exports.getAlbum = asyncHandler(async (req, res, next) => {
     const album = await Album.findById(req.params.id).populate('pictures');
 
+    if (!album) return next(new ErrorResponse('Album not found', 404))
     const length = album.length
     // res.set('Access-Control-Expose-Headers', 'Content-Range')
     res.set('X-Total-Count', `${length}`)
@@ -44,6 +45,21 @@ exports.createAlbum = asyncHandler(async (req, res, next) => {
 
     res.status(200).json(album)
 })
+
+// @desc    Edit album 
+// @route   PATCH/api/v1/albums/:id
+// @access  Private
+exports.editAlbum = asyncHandler(async (req, res, next) => {
+    let album = await Album.findById(req.params.id);
+
+    if (!album) return next(new ErrorResponse('Album not found', 404))
+    console.log(req.body);
+    album = await Album.findByIdAndUpdate(req.params.id, req.body);
+
+    res.status(200).json(album)
+})
+
+
 
 // @desc    Delete album 
 // @route   GET/api/v1/albums/:id

@@ -2,7 +2,7 @@ const express = require('express');
 const Album = require('../models/Album');
 
 // Bring in controllers
-const { getAlbums, getAlbum, createAlbum, deleteAlbum } = require('../controllers/albums');
+const { getAlbums, getAlbum, createAlbum, deleteAlbum, editAlbum} = require('../controllers/albums');
 
 // Bring in other resource routers
 const pictureRouter = require('./pictures')
@@ -23,7 +23,8 @@ router.route("/")
 
 router.route("/:id")
     .get(getAlbum)
-    .delete(protect, authorize("admin"), deleteAlbum);
+    .delete(protect, authorize("admin"), deleteAlbum)
+    .patch(protect, authorize('admin'), editAlbum);
 
 
 module.exports = router;

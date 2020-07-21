@@ -99,7 +99,22 @@ exports.createPicture = asyncHandler(async (req, res, next) => {
             }
         });
     }
+})
 
+
+// @desc    Edit one picture
+// @route   PATCH/api/v1/pictures/:id
+// @access  Private
+exports.editPicture = asyncHandler(async (req, res, next) => {
+
+    let picture = await Picture.findById(req.params.id)
+
+    if (!picture) return next(new ErrorResponse('Picture not found', 404));
+
+    picture = await Picture.findByIdAndUpdate(req.params.id, req.body);
+
+
+    res.status(200).json(picture)
 })
 
 
