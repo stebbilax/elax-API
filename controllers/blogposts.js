@@ -55,7 +55,6 @@ exports.createBlogpost = asyncHandler(async (req, res, next) => {
     // For every file sent
     for (let item in req.files) {
         const file = req.files[item];
-
         // Check if file is a photo
         if (!file.mimetype.startsWith('image')) {
             next(new ErrorResponse("File must be a image", 400))
@@ -63,6 +62,8 @@ exports.createBlogpost = asyncHandler(async (req, res, next) => {
 
         await cloudinary.uploader.upload(file.tempFilePath, async function (result, err) {
             if (err) {
+
+
                 return res.status(400).json(err)
             }
             try {
@@ -71,6 +72,7 @@ exports.createBlogpost = asyncHandler(async (req, res, next) => {
                 res.status(200).json(blogpost)
 
             } catch (error) {
+                console.log("herr");
                 next(error)
             }
         });
