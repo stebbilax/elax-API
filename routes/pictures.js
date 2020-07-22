@@ -4,7 +4,7 @@ const Picture = require('../models/Picture');
 
 
 // Bring in controllers
-const { getPictures, getPicture, createPicture, editPicture } = require('../controllers/pictures');
+const { getPictures, getPicture, createPicture, editPicture, deletePicture } = require('../controllers/pictures');
 
 
 const { protect, authorize } = require('../middleware/auth')
@@ -20,7 +20,9 @@ router.route("/")
 
 router.route("/:id")
     .get(getPicture)
-    .patch(protect, authorize('admin'), editPicture);
+    .patch(protect, authorize('admin'), editPicture)
+    .delete(protect, authorize('admin'), deletePicture);
+
 
 
 

@@ -24,7 +24,6 @@ exports.register = asyncHandler(async (req, res, next) => {
 // @access  Public
 exports.login = asyncHandler(async (req, res, next) => {
     const { name, password } = req.body;
-
     // Validate email and password
     if (!name || !password) return next(new ErrorResponse("Please enter name and password", 400));
 
