@@ -64,7 +64,6 @@ exports.createPicture = asyncHandler(async (req, res, next) => {
     // Add the album id to the body
     req.body.album = req.params.albumId
 
-
     const album = await Album.findById(req.params.albumId);
     // Check if album exists
     if (!album) {
